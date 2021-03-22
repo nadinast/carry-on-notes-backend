@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("https://carry-on-notes.herokuapp.com")
+@CrossOrigin(origins = "https://carry-on-notes.herokuapp.com")
 @RequestMapping("/api/notes")
 public class NotesController {
 
