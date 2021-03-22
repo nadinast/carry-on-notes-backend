@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
+@CrossOrigin("https://carry-on-notes.herokuapp.com/")
 @RequestMapping("/api/user")
 public class UserController {
 
