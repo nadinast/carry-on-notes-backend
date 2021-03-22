@@ -27,7 +27,8 @@ public class NotesController {
 
     @GetMapping("/{id}")
     public ResponseEntity<NoteVO> getNote(@PathVariable Long id) {
-        return new ResponseEntity(null, HttpStatus.OK);
+        NoteVO note = this.notesService.getNoteById(id);
+        return new ResponseEntity(note, HttpStatus.OK);
     }
 
     @PostMapping("/")

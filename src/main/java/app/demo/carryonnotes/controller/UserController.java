@@ -38,8 +38,8 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public ResponseEntity<String> logOutUser(HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<?> logOutUser(HttpServletRequest request, HttpServletResponse response) {
         this.userService.logOutUser(request, response);
-        return new ResponseEntity("Successfully logged out!", HttpStatus.OK);
+        return new ResponseEntity(null, HttpStatus.OK);
     }
 }

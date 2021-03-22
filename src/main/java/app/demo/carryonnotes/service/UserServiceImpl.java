@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public UserVO createNewUser(UserDTO user) throws EmailTakenException{
         if(emailUsed(user.getEmail())) {
             throw new EmailTakenException();
@@ -60,8 +62,9 @@ public class UserServiceImpl implements UserService{
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        this.userContext.setLoggedInUser(user.getEmail(), user.getId());
-        return new UserVO(user.getId(), user.getEmail());
+        User loggedInUser = this.userRepository.findByEmail(user.getEmail());
+        this.userContext.setLoggedInUser(loggedInUser.getEmail(), loggedInUser.getId());
+        return new UserVO(loggedInUser.getId(), loggedInUser.getEmail());
     }
 
     @Override

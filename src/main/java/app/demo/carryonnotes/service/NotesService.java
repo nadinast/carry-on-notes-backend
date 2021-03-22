@@ -13,4 +13,6 @@ public interface NotesService {
     NoteVO saveNote(NoteDTO note);
 
     NoteVO updateNote(NoteDTO note);
+
+    NoteVO getNoteById(Long id);
 }
