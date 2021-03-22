@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://carry-on-notes.herokuapp.com/"));
+        configuration.setAllowedOrigins(Arrays.asList("https://carry-on-notes.herokuapp.com"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
